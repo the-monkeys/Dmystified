@@ -1,69 +1,43 @@
-import { FC } from "react";
-import { ArrowRight, Radio } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { FC } from 'react';
 
-import { CourseItem } from "@/constants/courses";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
+import Image from 'next/image';
+import Link from 'next/link';
 
-const CourseCard: FC<{ course: CourseItem }> = ({ course }) => {
+import { Course } from '@/services/course/courseTypes';
+
+import Icon from '../icon';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
+
+const CourseCard: FC<{ course: Course }> = ({ course }) => {
   return (
-    <div className="col-span-2 md:col-span-1 rounded-lg border-1 border-gray-300 hover:shadow-md overflow-hidden">
-      <div className="p-4 pb-0 cursor-default">
-        <div className="flex justify-end gap-2">
-          <Badge variant="secondary">
-            {course.isLive && <Radio size={16} className="text-red-600 mr-2" />}
-            {course.isLive ? "Live" : "Upcoming"}
-          </Badge>
-
-          {course.onHold && <Badge variant="destructive">On Hold</Badge>}
-        </div>
-
-        <div className="w-fit h-10">
-          <Image
-            src={course.imagePath || ""}
-            alt={course.title}
-            width={100}
-            height={100}
-            className="w-full h-full"
-          />
-        </div>
-
-        <h2 className="py-2 text-xl sm:text-2xl md:text-3xl font-semibold">
-          {course.title}
-        </h2>
+    <div className='col-span-2 sm:col-span-1 p-4 sm:p-6 space-y-1 border-1 border-gray-100 bg-gray-50 rounded-2xl overflow-hidden'>
+      <div className='flex justify-end'>
+        <Badge variant={course.status === 'Live' ? 'live' : 'secondary'}>
+          {course.status}
+        </Badge>
       </div>
 
-      <Separator />
+      <div className='w-fit h-10 sm:h-12 md:14'>
+        <Image
+          src={course.imagePath || ''}
+          alt={course.title}
+          width={100}
+          height={100}
+          className='h-full w-full'
+        />
+      </div>
 
-      <div className="p-4 flex flex-col gap-4 cursor-default">
-        <p className="flex-1 text-sm sm:text-base">{course.description}</p>
+      <h2 className='font-medium text-xl sm:text-2xl'>{course.title}</h2>
 
-        <div className="space-y-1">
-          <p className="text-sm">
-            Duration:{" "}
-            <span className="font-medium">
-              {course.durationInHours
-                ? `${course.durationInHours} Hours`
-                : "TBD"}
-            </span>
-          </p>
+      <p className='text-sm text-gray-800 truncate'>{course.description}</p>
 
-          <p className="text-sm">
-            Medium:{" "}
-            <span className="font-medium">
-              {course.medium ? course.medium : "TBD"}
-            </span>
-          </p>
-        </div>
-
-        <Button className="group" asChild>
-          <Link href={`/${course.id}`}>
-            Discover More{" "}
-            <div className="mx-2 group-hover:ml-3 group-hover:mr-1 transition-all">
-              <ArrowRight size={16} />
+      <div className='pt-4'>
+        <Button className='w-full group rounded-full' variant='outline' asChild>
+          <Link href={`/${course.cname}`}>
+            Course Details{' '}
+            <div className='mx-2 group-hover:ml-3 group-hover:mr-1 transition-all'>
+              <Icon name='RiArrowRight' size={16} />
             </div>
           </Link>
         </Button>

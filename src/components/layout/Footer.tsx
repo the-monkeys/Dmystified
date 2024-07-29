@@ -1,57 +1,62 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import React from 'react';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
+import Icon from '../icon';
+import { LogoFull } from '../logo';
+import { Badge } from '../ui/badge';
+import Section from './Section';
 
 export function Footer() {
-	return (
-		<section className="mx-auto py-6 max-w-7xl px-4 lg:px-8 border-t-1 border-gray-200">
-			<div className="flex flex-wrap flex-col sm:flex-row items-start sm:items-center gap-4">
-				<div>
-					<Image
-						src="dmystified_logo_full.svg"
-						alt="Dmystified"
-						width={130}
-						height={130}
-					/>
+  return (
+    <Section className='mx-auto max-w-7xl py-4 sm:py-6 px-4 lg:px-8 border-t-1 border-gray-200'>
+      <div className='mb-10'>
+        <Link href='https://x.com/dmystified_tech' target='_blank'>
+          <Badge variant='outline' className='mb-2 hover:bg-gray-100'>
+            Get latest updates on{' '}
+            <Icon name='RiTwitterX' size={12} className='ml-1' />
+          </Badge>
+        </Link>
 
-					<p className="py-2 text-xs text-gray-900">
-						Dmystified, 2024, All Rights Reserved
-					</p>
+        <Image
+          src={LogoFull}
+          alt='Dmystified'
+          width={150}
+          height={150}
+          className='mx-1'
+        />
 
-					<div className="flex">
-						<Link
-							href="https://x.com/dmystified_tech"
-							target="_blank"
-							className="text-orange hover:text-black text-sm font-semibold"
-						>
-							Twitter
-						</Link>
-					</div>
-				</div>
+        <p className='m-1 w-fit text-xs font-medium text-gray-600'>
+          Dmystified, 2024, All Rights Reserved
+        </p>
+      </div>
 
-				<div className="flex-1 flex flex-col sm:flex-row flex-wrap justify-center gap-4">
-					<a
-						className="text-sm font-medium text-gray-800 hover:text-black"
-						href="#"
-					>
-						Privacy Policy
-					</a>
+      <p className='text-xs font-medium text-gray-600 text-center'>
+        Illustrations from{' '}
+        <Link
+          href='https://popsy.co/'
+          className='font-medium text-orange/80 underline'
+        >
+          Popsy
+        </Link>
+      </p>
 
-					<a
-						className="text-sm font-medium text-gray-800 hover:text-black"
-						href="#"
-					>
-						Terms of Service
-					</a>
+      <div className='p-1 flex flex-wrap justify-center gap-3'>
+        <Link
+          href='#'
+          className='text-xs font-medium text-gray-600 hover:text-gray-900'
+        >
+          Terms
+        </Link>
 
-					<a
-						className="text-sm font-medium text-gray-800 hover:text-black"
-						href="#"
-					>
-						Return Policy
-					</a>
-				</div>
-			</div>
-		</section>
-	);
+        <Link
+          href='#'
+          className='text-xs font-medium text-gray-600 hover:text-gray-900'
+        >
+          Policy
+        </Link>
+      </div>
+    </Section>
+  );
 }

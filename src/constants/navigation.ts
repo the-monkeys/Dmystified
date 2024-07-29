@@ -1,18 +1,17 @@
 export const navItems = [
-	{
-		name: "Courses",
-		href: "/#courses",
-	},
-	{
-		name: "Pricing",
-		href: "/#pricing",
-	},
-	{
-		name: "FAQ",
-		href: "/#faq",
-	},
-	{
-		name: "Contact",
-		href: "/#contactUs",
-	},
+  {
+    id: 1,
+    name: 'Courses',
+    href: '/#courses',
+  },
+  {
+    id: 2,
+    name: 'Pricing',
+    href: '/#pricing',
+  },
+  {
+    id: 3,
+    name: 'Contact',
+    href: '/#contact',
+  },
 ];

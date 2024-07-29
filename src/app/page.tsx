@@ -1,21 +1,26 @@
-import React from "react";
+import React from 'react';
 
-import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import Pricing from "@/components/Pricing";
-import ContactUs from "@/components/ContactUs";
-import FAQ from "@/components/Faq";
-import Courses from "@/components/Courses";
+import WhatsAppButton, {
+  WhatsAppButtonFloating,
+} from '@/components/WhatsappSupport';
+import Container from '@/components/layout/Container';
+import ContactUs from '@/components/sections/ContactUs';
+import Courses from '@/components/sections/Courses';
+import FAQ from '@/components/sections/Faq';
+import Features from '@/components/sections/Features';
+import Hero from '@/components/sections/Hero';
+import Pricing from '@/components/sections/Pricing';
 
 export default function HomePage() {
-	return (
-		<div className="w-full bg-white">
-			<Hero />
-			<Features />
-			<Courses />
-			<Pricing />
-			<FAQ />
-			<ContactUs />
-		</div>
-	);
+  return (
+    <Container className='bg-white'>
+      <Hero />
+      <Features />
+      <Courses />
+      <Pricing />
+      <FAQ />
+      <ContactUs />
+      <WhatsAppButtonFloating />
+    </Container>
+  );
 }
